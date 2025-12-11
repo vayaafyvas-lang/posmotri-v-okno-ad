@@ -1,3 +1,4 @@
+/* style.css */
 *,
 *::before,
 *::after {
@@ -8,7 +9,7 @@ html {
   block-size: 100%;
 }
 
-.page {
+.app {
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
@@ -48,4 +49,321 @@ ol {
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
+}
+
+/* Layout - Step 1 */
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 133px 30px;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 711px 399px;
+  grid-template-areas: 
+    "search-panel video-gallery";
+  gap: 30px;
+  align-items: flex-end;
+}
+
+.search-panel {
+  grid-area: search-panel;
+}
+
+.video-gallery {
+  grid-area: video-gallery;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.search-panel__form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.gallery-container {
+  height: 298px;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Step 2: Size Refinement */
+.video-wrapper {
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.video-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.video-card__image {
+  width: 194px;
+  height: 103px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.video-card__info {
+  flex-grow: 1;
+}
+
+/* Step 3: Text Styling */
+.form-section__heading {
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.6px;
+  margin-bottom: 5px;
+}
+
+.page-heading {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 70.5px;
+  text-transform: uppercase;
+}
+
+.accent-text {
+  color: #545050;
+}
+
+.video-link {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.video-card__heading {
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21.6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.video-card__description {
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 16.2px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.search-panel__form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.form-section {
+  border: none;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 15px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.form-input {
+  width: 225px;
+  height: 27px;
+  border: none;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.6px;
+  appearance: none;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.custom-checkbox {
+  width: 19px;
+  height: 19px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.custom-checkbox::after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  position: absolute;
+  display: none;
+}
+
+.checkbox-input:checked ~ .custom-checkbox::after {
+  display: block;
+}
+
+.form-label:has(.checkbox-input:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.form-label:hover .form-label__text {
+  text-decoration: underline;
+}
+
+.btn {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21.6px;
+  cursor: pointer;
+}
+
+.search-panel__submit-btn {
+  width: 194px;
+  height: 34px;
+  align-self: flex-end;
+}
+
+.load-more-btn {
+  width: 100%;
+  height: 34px;
+}
+
+.btn:hover {
+  text-decoration: underline;
+}
+
+.btn:active {
+  background-color: #545050;
+}
+
+.btn:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.video-grid__item {
+  display: block;
+  padding: 3px;
+}
+
+.video-link {
+  display: block;
+  padding: 2px;
+}
+
+.video-link_current {
+  background-color: #545050;
+}
+
+.video-link:hover {
+  text-decoration: underline;
+}
+
+.video-link:active {
+  background-color: #545050;
+}
+
+.video-link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.video-link:focus {
+  outline: none;
+}
+
+button,
+.video-link,
+.form-label {
+  cursor: pointer;
+}
+
+.video-wrapper,
+.gallery-container {
+  position: relative;
+}
+
+
+.video-grid {
+  padding-bottom: 5px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-label {
+  padding: 2px;
+}
+
+.video-card__heading,
+.video-card__description {
+  text-align: left;
 }
